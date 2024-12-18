@@ -13,41 +13,41 @@ import java.util.Optional;
 public class ProprietarioService {
 
     @Autowired
-    private ProprietarioRepository professorRepository;
+    private ProprietarioRepository proprietarioRepository;
 
-    public ProprietarioService(ProprietarioRepository professorRepository) {
-        this.professorRepository = professorRepository;
+    public ProprietarioService(ProprietarioRepository proprietarioRepository) {
+        this.proprietarioRepository = proprietarioRepository;
     }
 
     public List<ProprietarioModel> listarTodos() {
-        return professorRepository.findAll();
+        return proprietarioRepository.findAll();
     }
 
 
     public Optional<ProprietarioModel> buscarPorId(Long id) {
-        return professorRepository.findById(id);
+        return proprietarioRepository.findById(id);
     }
 
 
-    public ProprietarioModel salvar(ProprietarioModel professor) {
-        return professorRepository.save(professor);
+    public ProprietarioModel salvar(ProprietarioModel proprietario) {
+        return proprietarioRepository.save(proprietario);
     }
 
 
-    public ProprietarioModel atualizar(Long professorId, ProprietarioModel professor) {
+    public ProprietarioModel atualizar(Long proprietarioId, ProprietarioModel proprietario) {
 
-        ProprietarioModel professorExistente = professorRepository.findById(professorId)
+        ProprietarioModel proprietarioExistente = proprietarioRepository.findById(proprietarioId)
                 .orElseThrow(() -> new IllegalArgumentException("não encontrado"));
 
-        professorExistente.setNome(professor.getNome());
-        professorExistente.setEmail(professor.getEmail());
-        professorExistente.setImoveis(professor.getImoveis());
+        proprietarioExistente.setNome(proprietario.getNome());
+        proprietarioExistente.setEmail(proprietario.getEmail());
+        proprietarioExistente.setImoveis(proprietario.getImoveis());
 
-        return professorRepository.save(professorExistente);
+        return proprietarioRepository.save(proprietarioExistente);
     }
 
     public void deleteById(Long id) {
-        professorRepository.deleteById(id);
+        proprietarioRepository.deleteById(id);
     }
 
 }

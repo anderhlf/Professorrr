@@ -35,7 +35,6 @@ public class InquilinoService {
         InquilinoModel alunoExistente = alunoRepository.findById(alunoId)
                 .orElseThrow(() -> new IllegalArgumentException("Inquilino: não encontrada"));
 
-        alunoExistente.setImoveis(aluno.getImoveis());
         alunoExistente.setNome(aluno.getNome());
         alunoExistente.setEmail(aluno.getEmail());
 
